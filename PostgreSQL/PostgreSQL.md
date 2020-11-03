@@ -9,6 +9,7 @@
 * `\l` = show all databases on the server
 * `\c <db_name>` = switch to that database
     * `\dt` = show tables in the database you are connected to
+* `\d` = details about a sequence
 
 ### Useful Sequence Commands
 * Command to update the sequence value to a different number
@@ -29,8 +30,12 @@ WHERE
     relkind = 'S';
 ```
 
+### Changing Sequence Start Value
+SELECT setval('public.app_customer_id_seq', 100001, true);
+
 
 # REFERENCES
 * [List of Postgres Data Modeling Tools](https://dbmstools.com/categories/data-modeling-tools/postgresql)
 I need to look at the rest of the tools. But so far my favorite has been 
 GenMyModel
+* [Connect Oracle Data Modeler to Postgres](https://aus800.com.au/using-oracle-sql-developer-data-modeller-sddm-for-postgresql/)

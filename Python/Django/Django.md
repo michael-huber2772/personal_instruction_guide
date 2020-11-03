@@ -65,10 +65,45 @@ $ python manage.py migrate
 ```
 Next I will add my first application.
 
+#### My Steps for Adding a new page to my site
+1. Create URL path
+2. Add a view
+3. Create HTML page.
+
+
+## DEFINITIONS
+* [Static File Definitions](https://stackoverflow.com/questions/24022558/differences-between-staticfiles-dir-static-root-and-media-root)
+    * `MEDIA_ROOT` is the folder where files uploaded using FileField will go.
+    Absolute filesystem path to the directory that will hold user-uploaded files.
+    * `STATIC_ROOT` is the folder where static files will be stored after using 
+    `manage.py collectstatic`
+    > The absolute path to the directory where `collectstatic` will collect 
+    > static files for deployment. 
+    > If the staticfiles contrib app is enabled (default) the collectstatic 
+    > management command will collect static files into this directory. 
+    > See the howto on managing static files for more details about usage.
+    * `STATICFILES_DIRS` is the list of folders where Django will search for 
+    additional static files aside from the static folder of each app installed.
+    >This setting defines the additional locations the staticfiles app will 
+    > traverse if the FileSystemFinder finder is enabled, e.g. if you use the 
+    > collectstatic or findstatic management command or use the static file 
+    > serving view.
+
+
+
 ### Custom Model/Table ID's
 * [Setting ID to start at a certain value](https://stackoverflow.com/questions/117800/how-to-get-django-autofields-to-start-at-a-higher-number)
+
+# Django Templates/Boilerplat Code
+* [AppSpeed Django Templates](https://appseed.us/django)
+* [Django Dattaable Template](https://github.com/app-generator/django-dashboard-dattaable)
+* [Django Staradmin Template](https://github.com/app-generator/django-dashboard-staradmin)
+* [Django Atlantis Dark Template](https://appseed.us/admin-dashboards/django-dashboard-atlantis-dark)
+* [Django Corona Dark Template](https://appseed.us/admin-dashboards/django-dashboard-corona-dark)
+
 
 # REFERENCES
 * [PythonAnywhere Environment Variables](https://help.pythonanywhere.com/pages/environment-variables-for-web-apps/)
 * [Django Setting Custom ID for a table](https://techstream.org/Web-Development/Custom-Auto-Increment-Field-Django)
 * [Django Bootstrap3 Example](https://www.dev2qa.com/django-bootstrap3-example/)
+* [Django on Google App Engine](https://medium.com/bluekiri/gae-django-3-0-production-ready-app-using-cookiecutter-in-5-minutes-adb6c35a2b3e)
