@@ -102,8 +102,29 @@ Next I will add my first application.
 * [Django Corona Dark Template](https://appseed.us/admin-dashboards/django-dashboard-corona-dark)
 
 
+# Third Party Django Applications/Packages
+* [Django Packages Site](https://djangopackages.org/) 
+* Grappelli
+* [Django RA  ERP](https://github.com/ra-systems/django-ra-erp) Can be used to
+create business applications, for managing data and resource reporting.
+* [Django Slick Reporting](https://github.com/ra-systems/django-slick-reporting)
+A reporting engine, to create reports.
+
+## Django CMS Packages that may be useful
+* [Mezzanine](https://github.com/stephenmcd/mezzanine) This Looks the most
+promising.
+* [Wagtail](https://github.com/wagtail/wagtail) Wagtail is an open source 
+content management system built on Django, with a strong community and 
+commercial support. It's focused on user experience, and offers precise control 
+for designers and developers. (THIS MAY BE WHAT I NEED)
+* [django-cms](https://github.com/django-cms/django-cms) Widely used content
+management system that can be integrated with other apps.
+* Compare these with Django cookie cutter.
+
+
 # REFERENCES
 * [PythonAnywhere Environment Variables](https://help.pythonanywhere.com/pages/environment-variables-for-web-apps/)
 * [Django Setting Custom ID for a table](https://techstream.org/Web-Development/Custom-Auto-Increment-Field-Django)
 * [Django Bootstrap3 Example](https://www.dev2qa.com/django-bootstrap3-example/)
 * [Django on Google App Engine](https://medium.com/bluekiri/gae-django-3-0-production-ready-app-using-cookiecutter-in-5-minutes-adb6c35a2b3e)
+* [Django ORM if you already know SQL](https://amitness.com/2018/10/django-orm-for-sql-users/)
