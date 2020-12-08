@@ -32,3 +32,22 @@ Here I define the `driver` function and then add the `@pytest.fixture()` above
 it to allow me to use it in other function tests that I define. Then when
 I want to test that my homepage exists. I pass my driver fixture into the
 `test_homepage` function.
+
+Now fixtures in pytest can be used for many things. One example would be setting
+up a connection to a database. Then you could pass that fixture to other test
+functions that need to connect to the database. But every time you pass the
+fixture to a new function, it is going to make a new connection, which could
+be inefficient. So pytest offers scopes that you can set to control how many
+times a fixture will be executed.
+
+(Ref 1) "Pytest fixtures have five different scopes: function, class, module, 
+package, and session."
+
+### Function = default scope
+
+### Module 
+
+
+
+# References
+1. [Understand 5 Scopes of Pytest Fixtures](https://medium.com/better-programming/understand-5-scopes-of-pytest-fixtures-1b607b5c19ed)
