@@ -25,6 +25,18 @@
 12. Unverified outdated data
 13. Translytic Data
 
+# Data Profiling
+I believe that in regards to how data behaves that there is a finite amount of
+behaviors it must have so I believe that there must be a way to profile data
+sets. If I can profile data sets then I should be able to set standard coding
+standards of how to handle that data. Now I know I have read about type 1 and
+type 2 changes to data and I believe that, that will be part of the profiling.
+There also may already be a system out there for profiling. So if I find one
+I will try and switch over to that system. For now I am just going to record
+different types of data that I encounter.
+* Data that records historical events. So it has a day or term when it becomes
+  effective but back dated data can be inserted.
+
 ## Questions to Research
 -[ ] What type of data can a transactional database create. Can this be broken
      down into specific domains or descriptions.
