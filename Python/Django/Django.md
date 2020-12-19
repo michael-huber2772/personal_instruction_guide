@@ -2,12 +2,26 @@
 
 I have added a copy of a .gitignore file that contains most standard things taht need to be ignored when committing to git.
 
+## Installing Django
+Installs the most recent version of Django.
+```bash
+pip install Django
+```
+
+
 ## Starting a Project
 ```bash
 $ django-admin.py startproject <project_name> .
 ```
 Using the "." at the end of the above command will build the project in your current directory.
 If you don't use the "." then it will create another folder to contain all your directory files.
+
+At this point you can check and make sure that your project is up and running,
+by running the following command in your bash terminal and following the link
+that is outputted.
+```bash
+python manage.py runserver
+```
 
 Next I want to make sure that my secret key is never committed to version control so I am
 going to set up my environment variables now with dotenv. You can install it in your

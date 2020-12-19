@@ -18,10 +18,11 @@ got back to adding more details.
 - [ ] Hadoop
 - [ ] Apache Spark
 - [ ] MongoDB
-- [ ] Go
-- [ ] Java
+- [ ] Go - O'Reilly media has a sandbox
+- [ ] Java - O'Reilly media has a sandbox
 - [ ] Rust
-- [ ] Scala
+- [ ] Scala - O'Reilly media has a sandbox
+- [ ] Kubernetes - O'Reilly media has a sandbox
  
 
 # REFERENCES

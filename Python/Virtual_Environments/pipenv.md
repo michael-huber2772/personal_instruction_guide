@@ -7,6 +7,16 @@ environment by running the following command.
 pipenv --python 3.8
 ```
 
+To install packages
+```bash
+pipenv install <package-name>
+```
+
+To start working in the virtual environment
+```bash
+pipenv shell
+```
+
 ### Creating a requirements.txt File
 ```bash
 $ pipenv lock --requirements > requirements.txt
