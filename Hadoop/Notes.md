@@ -78,8 +78,37 @@ really it is a supplement to your relational database.
     * Healthcare Data - (Fitbit- Walks may be taken randomly)
     * Large volume of data.
 
+-----------------
+## Working with Hadoop File System
+* The Hadoop file system is immutable so it won't overwrite an existing file.
+  The new file would need to have a new name.
 
+![Mapreduce](slides/mapreduce_wordcount.JPG)
+In the process shown in the diagram. The sections where you will be writing code
+is for the mapping logic and the reducting logic.
 
+## MapReduce API Versions
+* Version 1.0
+    * org.apache.hadoop.mapred
+* Version 2.0
+    * org.apache.hadoop.mapreduce
+
+## MapReduce Libraries
+import org.apache.hadoop.fs.Path;
+import org.apache.hadoop.conf.*;
+import org.apache.hadoop.io.*;
+import org.apache.hadoop.mapred.*;
+import org.apache.hadoop.util.*;
+
+## MapReduce Mapper Code
+![Mapper code](slides/mapper_code.JPG)
+## MapReduce Mapper Code
+![Mapper code](slides/mapper_code_1.JPG)
+To be  able to run the code from above you need to create a main method.
+![Mapper code](slides/mapper_main_method.JPG)
+## Key Components
+
+------------
 # References
 1. Linkedin Learning: Big Data Analytics with Hadoop and Apache Spark (Need 
    prior experience with Haddoop and Spark for this course)

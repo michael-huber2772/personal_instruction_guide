@@ -1,10 +1,11 @@
 # Neo4j
-
+[Game of Thrones Graph Database](http://www.knowstack.com/game-of-thrones-family-graph-using-neo4j/)
 ### Query Language = Cypher
 
 ## CYPHER
 * Uses patterns to describe graph data (Ref 1)
 * declarative, describing what to find, not how to find it
+* Seems the standard file extension should be .cypher
 
 ### Cypher Commands and Syntax
 * Switching Databases. If you want to switch to the system database 
@@ -21,10 +22,25 @@ CREATE (ee:Person { name: "Emil", from: "Sweden", klout: 99 })
 * CREATE clause to create data
 * () parenthesis to indicate a node
 * ee:Person a variable 'ee' and label 'Person' for the new node
+* The variable can be the name of the Node while the label can be what the object
+  is. (Just note the variable is not the value that will show up in the node. I
+  believed the value that would show up in the node is the first property 
+  assigned to this node. But I ran a test where I put the name second and it
+  still displayed the name in the center of the node, so I am not sure how it
+  determines what value to put in the center of the node. When I left name out
+  of my test and gave it another property, there was no value returned at the
+  center of the node. When I changed the name to not match the variable, the
+  value I had listed as the name was returned. After looking at this for awhile
+  I believe the value that shows up in the node can be controlled by telling
+  it what properties to return.)
 * brackets to add properties to the node
+* You can also add multiple labels to the same node like so.
+```cypher
+CREATE (n:Person:Swedish)
+```
 
 Creating Many nodes and relationships at the same time.
-```neo4j
+```cypher
 MATCH (ee:Person) WHERE ee.name = "Emil"
 CREATE (js:Person { name: "Johan", from: "Sweden", learn: "surfing" }),
 (ir:Person { name: "Ian", from: "England", title: "author" }),
@@ -36,8 +52,14 @@ CREATE (js:Person { name: "Johan", from: "Sweden", learn: "surfing" }),
 (rvb)-[:KNOWS]->(ally)
 ```
 
+#### Creating a relationship on existing nodes
+```cypher
+MATCH (u:User {username:'admin'}), (r:Role {name:'ROLE_WEB_USER'})
+CREATE (u)-[:HAS_ROLE]->(r)
+```
+
 #### MATCH Finding Nodes (Ref 1)
-```neo4j
+```cypher
 MATCH (ee:Person) WHERE ee.name = "Emil" RETURN ee;
 ```
 
@@ -46,6 +68,47 @@ MATCH (ee:Person) WHERE ee.name = "Emil" RETURN ee;
 * WHERE clause to constrain the results
 * ee.name = "Emil" compares name property to the value "Emil"
 * RETURN clause used to request particular results
+
+#### Deleting Nodes
+```cypher
+MATCH (n:Person { name: 'UNKNOWN' })
+DELETE n
+```
+#### Deleting a Relationship
+```cypher
+MATCH (:God_Head {title:"The Lord"})-[r:WARNS]-(Lehi)
+DELETE r
+```
+
+
+#### Deleting all data from the database
+```cypher
+match (a) -[r] -> () delete a, r
+```
+```cypher
+match (a) delete a
+```
+
+#### Adding Properties to an existing node
+[Link](https://neo4j.com/docs/cypher-manual/current/clauses/merge/#merge-merge-single-node-with-properties)
+If I have created the following node and now I have found out more infomration
+about Kevin so I want to add properties. I can use the following code to add
+those properties.
+```cypher
+CREATE (Kevin:Person {name: "Kevin"})
+```
+
+```cypher
+MERGE (Kevin:Person)
+ON MATCH SET Kevin.hair_color = "Black" RETURN Kevin.name, Kevin.hair_color
+```
+(Note the RETURN is not needed for the update)
+
+#### Removing Properties from an Existing Node
+```cypher
+MATCH (Kevin:Person)
+REMOVE Kevin.hiar_color
+```
 
 ## Comparing Cypher to SQL
 
