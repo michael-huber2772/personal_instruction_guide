@@ -78,6 +78,9 @@ changing database requirements. It also does not have good Data Lineage.s
 * designed for data best represented as interconnected nodes
 * example: a series of road intersections
 
+#### Blockchain
+I am not sure on this but I am adding it here for now.
+
 #### Object Database
 * Tightly integrated with the object-oriented programming language used
 * Act as a persistence layer: store objects from your program directly
@@ -98,3 +101,17 @@ changing database requirements. It also does not have good Data Lineage.s
 * Hadoop - Poritions of hadoop could be considered a NoSQL database, but Hadoop
   as whole is not a database. It is better classified as an alternative file
   system with a processing library.
++ **MongoDB** - Consistent, Partition-tolerant
+  - You should always get the same data back from MongoDB
+  - Documents are partitioned through sharding
++ **Cassandra** - Available, partition-tolerant
++ **Riak** - Available, partition-tolerant
+  - Does not run easily on Windows
++ **Redis** - consistent, partition-tolerant
+
+
+# Partitioning in Relational Databases vs. NoSQL
++ Relational database can be partitioned horizontally or vertically.
++ Horizontal partitioning puts different rows on different partitions.
++ Vertical partitioning puts different columns on different partitions.
++ Partitioning non-relational databases depends on type.

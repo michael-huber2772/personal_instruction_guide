@@ -57,6 +57,17 @@ Cengage Learning. Kindle Edition.
 
 ## Subtype
 
+# Database Modeling Tools
++ [Db Visualizer](https://www.dbvis.com/)
++ [Druid](http://druid.sourceforge.net/) Free
++ [Hackalode NoSQL data modeler](https://hackolade.com/)
++ [Quick DBD](https://www.quickdatabasediagrams.com/) Free/Paid
++ [Mogwai ERDesigner NG](https://github.com/mirkosertic/MogwaiERDesignerNG) Free/Open source
++ [DBWrench](http://www.dbwrench.com/download/download_base.shtml) Free/Paid
++ [Squirrel SQL](http://www.squirrelsql.org/) Free
+
+
 # References
-Coronel, Carlos. Database Systems: Design, Implementation, & Management. Cengage 
-Learning. Kindle Edition. 
++ Coronel, Carlos. Database Systems: Design, Implementation, & Management. Cengage 
+  Learning. Kindle Edition.
++ [Data Modeling Tools](https://www.databasestar.com/data-modeling-tools/)
