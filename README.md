@@ -13,6 +13,7 @@ got back to adding more details.
       examples of how to do that function in the new language I am learning.
       So for example I could show how to do a for loop in python and then I
       could have code to do the same loop in sql or scala.
+- [ ] Make table of contents that point to different repositories
 
 # Languages/Tools to Learn
 - [ ] Hadoop
