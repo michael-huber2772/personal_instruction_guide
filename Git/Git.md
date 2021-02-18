@@ -25,3 +25,17 @@ Then I need to add the file to the gitignore file with the following code
 ```bash
 $ echo “<directory or file name>” >> .gitignore
 ```
+---
+
+## Merge
+
+### Copying files from 1 branch to another branch
+```bash
+$ git checkout branch1 # ensure branch1 is active
+$ git checkout branch2 file.py
+```
+  This will not change the branch. After executing this command `file.py` will
+  now be part of branch1. If it was already in branch1 the code will be updated
+  to the code that was contained in branch2.
+
+---
