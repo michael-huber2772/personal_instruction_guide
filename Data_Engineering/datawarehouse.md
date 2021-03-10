@@ -1,5 +1,27 @@
 # Data Warehousing Techniques
 
+# Fact Tables
++ Types of Fact Tables
+  - Transaction
+  - Periodic Snapshot
+  - Accumulating Snapshot
+
+## Transaction Fact Table
+Tracks the individual activities that define a business process and supports 
+several facts that describe these activities. It can provide rich analytic 
+possibilities, and often serves as a granular repository of atomic data.
+
+## Snapshot Fact Table
+Periodically samples status measurements such as balances or levels. These 
+measurements may be equivalent to the cumulative effect of a series of 
+transactions but are not easy to study in that format. Some status measurements, 
+such as temperature, cannot be modeled as transactions at all.
+
+## Accumulating Snapshot
+Used to track the progress of an individual item through a series of processing 
+steps. It enables the study of elapsed time between major process milestones or 
+events. This kind of fact table correlates several different activities in a 
+single row.
 
 ## Hierarchies
 Different types of hierarchies.

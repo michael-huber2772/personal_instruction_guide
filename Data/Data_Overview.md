@@ -9,6 +9,8 @@
 * Qualitative Data
 
 # Types of Data and How to Handle it (Ref 1)
+Many of these data types may overlap or be the same thing with similar names.
+I am just adding the information here as I study.
 
 1. Big Data (data that will not practically fit into a relational database)
 2. Structured, unstructured, semi-structured data
@@ -24,6 +26,13 @@
 11. High-dimensional data
 12. Unverified outdated data
 13. Translytic Data
+14. Decision Support Data
+15. Operational Data
+
+# Types of Data
+1. Character Data
+2. Numeric Data
+3. Date Data
 
 # Data Profiling
 I believe that in regards to how data behaves that there is a finite amount of

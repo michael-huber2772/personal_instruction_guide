@@ -27,3 +27,26 @@ got back to adding more details.
  
 
 # REFERENCES
+
+
+## Course Links
+University of Toronto - Learn to Program (No Fee Charged) https://www.coursera.org/course/programming1
+Udacity Programming – Intro to Computer Science (No Fee Charged) https://www.udacity.com/course/intro-to-computer-science--cs101
+Not sure if these courses are free
+
+### C#
+https://mva.microsoft.com/en-us/training-courses/c-fundamentals-for-absolute-beginners-8295?l=bifAqFYy_204984382 (Microsoft-sponsored, highly rated, video-based training)
+http://msdn.microsoft.com/en-us/library/aa288436(v=vs.71).aspx (Microsoft-sponsored, tutorial-based training)
+http://www.tutorialspoint.com/csharp/csharp_program_structure.htm (Third-party, example-based training)
+https://www.coursera.org/course/gameprogramming
+### C++
+http://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-096-introduction-to-c-january-iap-2011/
+### JavaScript
+https://alison.com/courses/Understanding-the-Functionality-of-JavaScript-jQuery-and-AJAX
+http://www.codecademy.com/learn/javascript
+### Python
+http://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-00-introduction-to-computer-science-and-programming-fall-2008/
+http://www.amu.apus.edu/academic/resources/course-schedule/course/course-details.entd200.htmlSystem ($24/unit): ENTD200 – Fundamentals of Programming)
+http://www.codecademy.com/learn/python
+
+

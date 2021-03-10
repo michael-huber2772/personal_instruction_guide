@@ -31,3 +31,30 @@ MINUS
 SELECT 2
 FROM DUAL
 ;
+
+/*==============================================================================
+                MINUS AS A DISTINCT
+================================================================================
+If you already have query that is using a MINUS statment you don't have to use
+a DISTINCT because the MINUS will perform like a DISTINCT on the data
+*/
+
+SELECT
+    column_value
+FROM
+    TABLE(sys.odcivarchar2list('baseball', 'basketball', 'basketball', 'football', 'football'))
+
+MINUS
+
+SELECT
+    column_value
+FROM
+    TABLE(sys.odcivarchar2list('tennis ball'))
+;
+/*
+OUTPUT
+------
+baseball
+basketall
+football
+*/
