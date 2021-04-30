@@ -178,3 +178,9 @@ docker rm <container-id>
 
 ## TODO
 - [ ] Finish copying over my Docker notes from my files
+
+## Future Reading
++ [Python File Docker App](https://www.pybootcamp.com/blog/how-to-write-dockerfile-python-apps/#add-a-working-directorys)
+
+
+/home/michael/ProgramScripts/github_repos/python-hello-world/data

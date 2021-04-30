@@ -11,6 +11,10 @@
   and values.
 * [Prometheus](https://prometheus.io/)
 
+# Schedulers
++ Apache NiFi
++ Apache Airflow
++ Luigi
 
 # When to Use Each Tool
 This section will focus on when to use different tools. E.g. it will be a guide
