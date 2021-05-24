@@ -2,7 +2,31 @@
 
 ## Common Commands and Actions
 
+### Creating a Role
+```sql
+CREATE ROLE demo_role WITH LOGIN, CREATE, SELECT, INSERT, UPDATE, DELETE;
+```
+
+#### List of Privilieges (Not Comprehensive)
+SELECT,
+INSERT,
+UPDATE,
+DELETE,
+TRUNCATE,
+REFERENCES,
+TRIGGER,
+CREATE,
+CONNECT,
+TEMPORARY,
+EXECUTE,
+USAGE,
+LOGIN,
+
+
 ### Creating a user for an application
+```sql
+CREATE USER test WITH PASSWORD 'test123';
+```
 
 ### psql Commands
 * `\du` = Lists all user accounts (or roles)

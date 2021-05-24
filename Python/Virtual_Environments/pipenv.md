@@ -21,3 +21,12 @@ pipenv shell
 ```bash
 $ pipenv lock --requirements > requirements.txt
 ```
+## Deactivate Virtual Environment
+```bash
+exit
+```
+
+## Remove Virtual Environment
+```bash
+pipenv --rm
+```
