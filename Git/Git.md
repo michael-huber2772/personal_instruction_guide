@@ -39,3 +39,6 @@ $ git checkout branch2 file.py
   to the code that was contained in branch2.
 
 ---
+
+# References
++ [Git bash & Github SSH](https://liyanxu.blog/2017/02/12/install-git-on-windows-and-set-up-ssh-keys/)
