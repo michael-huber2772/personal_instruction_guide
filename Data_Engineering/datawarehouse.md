@@ -49,3 +49,22 @@ Different types of hierarchies.
 * Time-stamped dimensions - used for point in time analysis.
 * Hybrid Techniques
 
+## Slowly Changing Dimensions
+[Definition:](https://www.oracle.com/webfolder/technetwork/tutorials/obe/db/10g/r2/owb/owb10gr2_gs/owb/lesson3/slowlychangingdimensions.htm) "A Slowly Changing
+Dimension (SCD) is a dimension that stores and manages both current and
+historical data over time in a data warehouse. It is considered and implemented
+as one of the most critical ETL tasks in tracking the history of dimension
+records."
+
+Data in your dimension tables will change over time. There are different ways
+to track these changes and update the dimension table. Depending on what you
+plan to do with the data will help you decide which type of slowly changing
+dimension to use.
+
+|  | Action | Effect on Facts |
+|-|-|-|
+| Type 1 | Update Dimension | Restates History |
+| Type 2 | Insert New Row in Dimension Table | Preserves History |   
+
+(Graph Taken from "The Complete Reference Star Schema")
+
