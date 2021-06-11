@@ -1,13 +1,19 @@
 /*
-Oracle Procedure Breakdown
+Type 2 Slowly Changing Dimension with start and end dates
 
 The data for advisors is stored in its raw format in the table ds_advisor_assignments. Advisor assignments will be added to the 
-table. So to find a students current advisor you must look for the advisor that has the highest EFFECTIVE_TERM_CODE. However
-some students may have two advisors assigned in the same term. If that is the case you should determine the current advisor
-using the highest ACTIVITY_DATE. If the activity dates are the same, you should select the MAX SOURCE_VERSION. If the versions
-are the same you should use the MAX SURROGATE_ID. If the surrogate_id's were unique you could determine the current advisor for
-a student using that value. But there are duplicate surrogate_id's in the data. Following the steps listed above should
-keep you from having issues with the duplicates. (Note no duplicates appear in the sample data)
+table but not all old records will be removed. So to find a students current advisor you must look for the advisor that 
+has the highest EFFECTIVE_TERM_CODE. 
+
+Some students may have two advisors assigned in the same term. If that is the case you should determine the current 
+advisor using the highest ACTIVITY_DATE. If the activity dates are the same, you should select the MAX SOURCE_VERSION. 
+If the versions are the same you should use the MAX SURROGATE_ID. If the surrogate_id's were unique you could determine 
+the current advisor for a student using that value. But there are duplicate surrogate_id's in the data. Following the 
+steps listed above should keep you from having issues with the duplicates. (Note no duplicates appear in the sample data)
+
+The end result of your query should return a student's list of current advisors with start and end dates for each 
+advisor. The activity date will be the start date while the end date should be 31-DEC-2999 for current records or the
+start date of the next record minus 1 day for old records.
 
 
 TABLES & COLUMNS NEEDED
@@ -21,13 +27,13 @@ TABLES & COLUMNS NEEDED
         * EFFECTIVE_TERM_CODE - Term codes are the year with the number 1-3 added to the end. E.g. 20191, 20192, 20193
             - 1 = Spring, 2 = Summer, 3 = Fall
         * ADVISOR_TYPE - Possible advisor types in the example will only be 'ADVSR'=Advisor 
-        * ACTIVITY_DATE
+        * ACTIVITY_DATE - Date the source data was updated
         * TRACKING_ID - Concatenation of student_id and advisor_type (This helps in processing, in a data warehouse we are not worried about repeat values)
         * SOURCE_VERSION - Every time a record is updated the version has 1 added to it
         * SURROGATE_ID - Identification record for the row. I will make this value 100 or greater
         * PROCESSING_HASH - Concatenation of the values that uniquely identify a row - Used for incremental loading. In this instance it is the GUID concatenated with the source_version
-        * DS_UPDATE_TIME 
-        * DS_CREATE_TIME
+        * DS_UPDATE_TIME - Date the row was last updated
+        * DS_CREATE_TIME - Date the row was created
 
 DATA
 ----
@@ -61,7 +67,7 @@ CREATE TABLE ds_advisor_assignments (
 ;
 
 --DROP TABLE ds_advisor_assignments
-;
+-- ;
 --TRUNCATE TABLE ds_advisor_assignments
 --;
 
@@ -88,15 +94,22 @@ ALTER TABLE current_advisors MODIFY end_date DEFAULT TO_DATE('31-DEC-2999','DD-M
 
 --DROP TABLE current_advisors
 --;
-TRUNCATE TABLE current_advisors
-;
+-- TRUNCATE TABLE current_advisors
+-- ;
 
 /*
+CURRENT_ADVISORS DATA
+======================
 STUDENT 1
 ----------
 END_DATE for the below record after processing the new records should be 09-DEC-16.
 */
 INSERT INTO current_advisors (student_id, advisor_id, effective_term_code, start_date, tracking_id, source_version, processing_hash, ds_update_time, ds_create_time) VALUES (1, 4, 20163, TO_DATE('10-MAY-16','DD-MON-YYYY'), '1ADVSR', 1, 'xxxx1', TO_DATE('09-MAY-16','DD-MON-YYYY'), TO_DATE('10-MAY-16','DD-MON-YYYY'));
+/*
+STUDENT 4
+----------
+Processing hash already exists in this table so a duplicate record should not be inserted for this individual
+*/
 INSERT INTO current_advisors (student_id, advisor_id, effective_term_code, start_date, tracking_id, source_version, processing_hash, ds_update_time, ds_create_time) VALUES (4, 4, 20172, TO_DATE('10-MAY-2017','DD-MON-YYYY'), '4ADVSR', 2, 'bccc2', TO_DATE('11-MAY-2017','DD-MON-YYYY'), TO_DATE('11-MAY-2017','DD-MON-YYYY'));
 
 SELECT *
@@ -108,6 +121,8 @@ FROM current_advisors
 
 
 /*
+DS_ADVISOR_ASSIGNMENTS DATA
+============================
 Student 1
 ---------
 Everything is the same between the two records except the advisor_id and the surrogate_id. Per our requirements for the data 
@@ -155,15 +170,10 @@ FROM ds_advisor_assignments
 CREATE OR REPLACE PROCEDURE insert_current_advisors
 IS
     --=====================================================
-    -- Control variables
+    -- Variables
     --=====================================================
     v_step            integer := 100;
     v_insert_count    integer := 0;   -- no of records inserted
-
-    
-    --=====================================================
-    -- Variables
-    --=====================================================
     v_dss_create_time       date;         -- Used for date insert
     v_dss_update_time       date;         -- Used for date insert
     
@@ -405,14 +415,10 @@ END;
 
 END insert_current_advisors;
 
-/*
-TODO:
-+ See about saving the output into a variable then using that variable to update the table and then insert the data into the table
-*/
-
 
 -- This will run the procedure from above. It will end_date expiring rows and insert new current advisors
 EXECUTE insert_current_advisors;
+
 
 SELECT *
 FROM current_advisors
