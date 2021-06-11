@@ -195,7 +195,7 @@ BEGIN
     SELECT temp_source.end_date
         , temp_source.ds_update_time
     FROM (
-        WITH max_term_code_eff
+        WITH current_adv_filter
             AS ( SELECT   student_id
                         , advisor_id
                         , effective_term_code
@@ -206,32 +206,13 @@ BEGIN
                         , surrogate_id
                         , processing_hash
                  FROM ds_advisor_assignments a
-                 WHERE a.effective_term_code = (SELECT MAX(b.effective_term_code)
+                 -- As soon as the code hits a value that is greater it will exit out. So if the term_codes are the same
+                 -- but one activity date is greater than the other it will select the record with the higher date
+                 WHERE TO_CHAR(a.effective_term_code) || TO_CHAR(a.activity_date, 'YYYYMMDD') || TO_CHAR(a.source_version) || TO_CHAR(a.surrogate_id) = 
+                 (SELECT MAX(TO_CHAR(b.effective_term_code) || TO_CHAR(b.activity_date, 'YYYYMMDD') || TO_CHAR(b.source_version) || TO_CHAR(b.surrogate_id))
                                                 FROM ds_advisor_assignments b
                                                 WHERE a.tracking_id = b.tracking_id)
-            ),
-            current_adv_filter
-            AS ( SELECT   student_id
-                        , advisor_id
-                        , effective_term_code
-                        , advisor_type
-                        , activity_date
-                        , tracking_id
-                        , source_version
-                        , surrogate_id
-                        , processing_hash
-                 FROM max_term_code_eff a
-                 WHERE a.activity_date = ( SELECT MAX(b.activity_date)
-                                           FROM max_term_code_eff b
-                                           WHERE a.tracking_id = b.tracking_id)
-                 AND a.source_version = ( SELECT MAX(b.source_version)
-                                           FROM max_term_code_eff b
-                                           WHERE a.tracking_id = b.tracking_id)
-                 AND a.surrogate_id = ( SELECT MAX(b.surrogate_id)
-                                           FROM max_term_code_eff b
-                                           WHERE a.tracking_id = b.tracking_id)
-            
-            ),
+                ),
         combined_records AS (
             SELECT    current_adv_filter.tracking_id
                     , current_adv_filter.activity_date start_date
@@ -271,7 +252,7 @@ BEGIN
      --------------------------------------------------------------------------------------------------------------------
     WHERE target.end_date = TO_DATE('31-DEC-2999','DD-MON-YYYY')
     AND (target.tracking_id) IN (
-        WITH max_term_code_eff
+        WITH current_adv_filter
             AS ( SELECT   student_id
                         , advisor_id
                         , effective_term_code
@@ -282,32 +263,13 @@ BEGIN
                         , surrogate_id
                         , processing_hash
                  FROM ds_advisor_assignments a
-                 WHERE a.effective_term_code = (SELECT MAX(b.effective_term_code)
+                 -- As soon as the code hits a value that is greater it will exit out. So if the term_codes are the same
+                 -- but one activity date is greater than the other it will select the record with the higher date
+                 WHERE TO_CHAR(a.effective_term_code) || TO_CHAR(a.activity_date, 'YYYYMMDD') || TO_CHAR(a.source_version) || TO_CHAR(a.surrogate_id) = 
+                 (SELECT MAX(TO_CHAR(b.effective_term_code) || TO_CHAR(b.activity_date, 'YYYYMMDD') || TO_CHAR(b.source_version) || TO_CHAR(b.surrogate_id))
                                                 FROM ds_advisor_assignments b
                                                 WHERE a.tracking_id = b.tracking_id)
-            ),
-            current_adv_filter
-            AS ( SELECT   student_id
-                        , advisor_id
-                        , effective_term_code
-                        , advisor_type
-                        , activity_date
-                        , tracking_id
-                        , source_version
-                        , surrogate_id
-                        , processing_hash
-                 FROM max_term_code_eff a
-                 WHERE a.activity_date = ( SELECT MAX(b.activity_date)
-                                           FROM max_term_code_eff b
-                                           WHERE a.tracking_id = b.tracking_id)
-                 AND a.source_version = ( SELECT MAX(b.source_version)
-                                           FROM max_term_code_eff b
-                                           WHERE a.tracking_id = b.tracking_id)
-                 AND a.surrogate_id = ( SELECT MAX(b.surrogate_id)
-                                           FROM max_term_code_eff b
-                                           WHERE a.tracking_id = b.tracking_id)
-            
-            ),
+                ),
         combined_records AS (
             SELECT    current_adv_filter.tracking_id
                     , current_adv_filter.activity_date start_date
@@ -357,43 +319,24 @@ BEGIN
           , ds_update_time
           , ds_create_time
         )
-    WITH max_term_code_eff
-        AS ( SELECT   student_id
-                    , advisor_id
-                    , effective_term_code
-                    , advisor_type
-                    , activity_date
-                    , tracking_id
-                    , source_version
-                    , surrogate_id
-                    , processing_hash
-             FROM ds_advisor_assignments a
-             WHERE a.effective_term_code = (SELECT MAX(b.effective_term_code)
-                                            FROM ds_advisor_assignments b
-                                            WHERE a.tracking_id = b.tracking_id)
-        ),
-        current_adv_filter
-        AS ( SELECT   student_id
-                    , advisor_id
-                    , effective_term_code
-                    , advisor_type
-                    , activity_date
-                    , tracking_id
-                    , source_version
-                    , surrogate_id
-                    , processing_hash
-             FROM max_term_code_eff a
-             WHERE a.activity_date = ( SELECT MAX(b.activity_date)
-                                       FROM max_term_code_eff b
-                                       WHERE a.tracking_id = b.tracking_id)
-             AND a.source_version = ( SELECT MAX(b.source_version)
-                                       FROM max_term_code_eff b
-                                       WHERE a.tracking_id = b.tracking_id)
-             AND a.surrogate_id = ( SELECT MAX(b.surrogate_id)
-                                       FROM max_term_code_eff b
-                                       WHERE a.tracking_id = b.tracking_id)
-        
-        )
+    WITH current_adv_filter
+            AS ( SELECT   student_id
+                        , advisor_id
+                        , effective_term_code
+                        , advisor_type
+                        , activity_date
+                        , tracking_id
+                        , source_version
+                        , surrogate_id
+                        , processing_hash
+                 FROM ds_advisor_assignments a
+                 -- As soon as the code hits a value that is greater it will exit out. So if the term_codes are the same
+                 -- but one activity date is greater than the other it will select the record with the higher date
+                 WHERE TO_CHAR(a.effective_term_code) || TO_CHAR(a.activity_date, 'YYYYMMDD') || TO_CHAR(a.source_version) || TO_CHAR(a.surrogate_id) = 
+                 (SELECT MAX(TO_CHAR(b.effective_term_code) || TO_CHAR(b.activity_date, 'YYYYMMDD') || TO_CHAR(b.source_version) || TO_CHAR(b.surrogate_id))
+                                                FROM ds_advisor_assignments b
+                                                WHERE a.tracking_id = b.tracking_id)
+                )
     SELECT  current_adv_filter.student_id
           , current_adv_filter.advisor_id
           , current_adv_filter.effective_term_code
@@ -424,3 +367,6 @@ SELECT *
 FROM current_advisors
 ORDER BY 1
 ;
+
+
+
