@@ -181,6 +181,7 @@ docker rm <container-id>
 
 ## Future Reading
 + [Python File Docker App](https://www.pybootcamp.com/blog/how-to-write-dockerfile-python-apps/#add-a-working-directorys)
++ [Python Windows Server on Docker](https://blog.devgenius.io/creating-python-docker-image-for-windows-nano-server-151e1ab7188a)
 
 
 /home/michael/ProgramScripts/github_repos/python-hello-world/data
