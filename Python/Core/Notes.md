@@ -66,11 +66,39 @@ as the parameter of another function.
 Begin and end with a double underscore. Dunder is short for double underscore.These types of methods are called
 automatically at certain times. Classes can override most of these methods.
 
-#### __init__() Function:
+#### `__init__()` Function:
 
 + Always executed when the class is being initiated. (Called automatically whenever an instance is created)
 + It initializes attributes of the method
 + Known as the initializer method or constructor method.
+
+#### `__repr__` and `__str__`
+[Explanation](https://www.pythontutorial.net/python-oop/python-__repr__/)
++ `__repr__`: implement this method to return a string representation of an object that is machine-readable.
++ `__str__`: Implement the string method to return the string representation of an object that is human readable
+
+Example Code:
+```bash
+class Person:
+    def __init__(self, first_name, last_name, age):
+        self.first_name = first_name
+        self.last_name = last_name
+        self.age = age
+
+    def __repr__(self):
+        return f'Person("{self.first_name}","{self.last_name}",{self.age})'
+
+    def __str__(self):
+        return f'({self.first_name},{self.last_name},{self.age})'
+
+
+person = Person('John', 'Doe', 25)
+# use str()
+print(person)
+
+# use repr()
+print(repr(person))
+```
 
 ## Function
 + A function can take another function as a parameter.
