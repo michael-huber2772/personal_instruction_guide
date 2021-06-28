@@ -20,6 +20,10 @@ docker run python-hello-world
   ```bash
   docker ps -a
   ```
+## IP Address for a Running Container
+```bash
+docker inspect --format='{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' <container_id>
+```
 
 ## IMAGES
 ### List Images

@@ -61,6 +61,10 @@ as the parameter of another function.
 + You can make a decorator to check something.
 + You can add multiple decorators onto one function
 
+### `@classmethod` & `@staticmethod`
+
++ [Explanation for `@classmethod`](https://www.tutorialsteacher.com/python/classmethod-decorator)
+
 ## Dunder Methods
 
 Begin and end with a double underscore. Dunder is short for double underscore.These types of methods are called
