@@ -2,22 +2,27 @@
 
 # Fact Tables
 + Types of Fact Tables
+  - Factless
   - Transaction
   - Periodic Snapshot
   - Accumulating Snapshot
+
+## Factless Fact Table
+Measurement events can capture numerical results. But it is possible to just record a set of dimensional entities coming
+together at a moment in time.
 
 ## Transaction Fact Table
 Tracks the individual activities that define a business process and supports 
 several facts that describe these activities. It can provide rich analytic 
 possibilities, and often serves as a granular repository of atomic data.
 
-## Snapshot Fact Table
+## Periodic Snapshot Fact Table
 Periodically samples status measurements such as balances or levels. These 
 measurements may be equivalent to the cumulative effect of a series of 
 transactions but are not easy to study in that format. Some status measurements, 
 such as temperature, cannot be modeled as transactions at all.
 
-## Accumulating Snapshot
+## Accumulating Snapshot Fact Table
 Used to track the progress of an individual item through a series of processing 
 steps. It enables the study of elapsed time between major process milestones or 
 events. This kind of fact table correlates several different activities in a 

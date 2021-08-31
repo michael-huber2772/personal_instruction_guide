@@ -55,6 +55,28 @@
 
     This means that the above code would fail because I did not pass self to the `print_tweet` method.
 
+### Private Methods/Functions in Classes
+To make a method in a Class private. You just have to add the `__` double underscores at the front of the name. This
+will keep people from accessing the method outside of the classs. However if you do need to access the method you can
+do what I have done below to use it. I have mainly used this if I want to test a private method.
+
+```python
+class ExampleClass:
+    def public_method(self):
+        print('Public')
+
+    def __private_method(self):
+        print('Private')
+
+obj = ExampleClass()
+obj.public_method
+# OUTPUT: Public
+obj.__private_method
+# OUTPUT: Error
+obj._ExampleClass__private_method()
+# OUTPUT: Private
+```
+---
 ## Decorator
 A decorator takes in a function, adds some functionality and returns it. It is essentially like putting a function in
 as the parameter of another function.
@@ -65,6 +87,7 @@ as the parameter of another function.
 
 + [Explanation for `@classmethod`](https://www.tutorialsteacher.com/python/classmethod-decorator)
 
+---
 ## Dunder Methods
 
 Begin and end with a double underscore. Dunder is short for double underscore.These types of methods are called
@@ -103,7 +126,7 @@ print(person)
 # use repr()
 print(repr(person))
 ```
-
+---
 ## Function
 + A function can take another function as a parameter.
 
@@ -165,7 +188,7 @@ So then you would do:
 ```
 import mypackage.mymodule
 ```
-
+---
 # References
 + [List of Best Practices](https://gist.github.com/sloria/7001839)
 + [Creating an Opensource Python Project from Scratch](https://jacobtomlinson.dev/posts/2021/testing-and-continuous-integration-for-python-packages-with-github-actions/)

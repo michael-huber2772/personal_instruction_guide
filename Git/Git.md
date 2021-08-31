@@ -25,7 +25,7 @@ Then I need to add the file to the gitignore file with the following code
 ```bash
 $ echo “<directory or file name>” >> .gitignore
 ```
----
+--- 
 
 ## Merge
 
@@ -37,6 +37,17 @@ $ git checkout branch2 file.py
   This will not change the branch. After executing this command `file.py` will
   now be part of branch1. If it was already in branch1 the code will be updated
   to the code that was contained in branch2.
+
+---
+## Git Diff on two files not in a repo
+`git diff --no-index --word-diff old.txt new.txt` 
+(--word-diff highlights changes by word, not just line, which is super helpful for long text).
+
+ 
+From <https://stackoverflow.com/questions/16683121/git-diff-between-two-different-files>
+
+
+
 
 ---
 

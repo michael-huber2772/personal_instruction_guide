@@ -19,3 +19,7 @@ worked perfectly and I was able to import the data into python.
 
 * You can run queries against the quickbooks data using the program VB Demo.
 * It appears that quickbooks uses SQL Server
+
+
+# References
++ [Quickbooks SDK](https://developer.intuit.com/app/developer/qbdesktop/docs/develop/exploring-the-quickbooks-desktop-sdk)

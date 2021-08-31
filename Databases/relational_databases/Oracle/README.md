@@ -9,7 +9,11 @@ keep searching your answer is out there.
 # Oracle Notes
 
 
-* [SQL Developer Unit Test Walk Through](https://docs.oracle.com/cd/E55747_01/appdev.41/e55591/sql-developer-unit-testing.htm#RPTUG45072)
++ [SQL Developer Unit Test Walk Through](https://docs.oracle.com/cd/E55747_01/appdev.41/e55591/sql-developer-unit-testing.htm#RPTUG45072)
+
+## Notes to Organize
++ A where clause on a query with an outer join it can effectively make it an inner join. When the predicate is in the ON
+  clause, you filter the rows from T2, the outer join those results to T1.
 
 
 # Practical Oracle SQL: Mastering the Full Power of Oracle Database
@@ -47,11 +51,16 @@ build apps with Docker
 
 
 # References
-* [Github Forking Help](https://akrabat.com/the-beginners-guide-to-contributing-to-a-github-project/)
++ [Github Forking Help](https://akrabat.com/the-beginners-guide-to-contributing-to-a-github-project/)
 This explains when to use the master or development branch.
-* SQL Style Guides
-    * [Gitlab SQL Style Guide](https://about.gitlab.com/handbook/business-ops/data-team/sql-style-guide/)
-    * [SQL Style Guide](https://www.sqlstyle.guide/)
-    * [Kickstarter SQL Style Guide](https://gist.github.com/fredbenenson/7bb92718e19138c20591)
-    * [Oracle SQL and PL/SQL Coding Guidelines](https://bitbucket.org/databaseline/docs/src/master/oracle/guidelines.md)
-* [Unit Testing PL/SQL Code](https://databaseline.tech/unit-testing-plsql-code/)
++ [Oracle SQL Temporary Tables Discussion](https://asktom.oracle.com/pls/apex/f?p=100:11:0::::P11_QUESTION_ID:1164655862293)
++ SQL Style Guides
+    - [Gitlab SQL Style Guide](https://about.gitlab.com/handbook/business-ops/data-team/sql-style-guide/)
+    - [SQL Style Guide](https://www.sqlstyle.guide/)
+    - [Kickstarter SQL Style Guide](https://gist.github.com/fredbenenson/7bb92718e19138c20591)
+    - [Oracle SQL and PL/SQL Coding Guidelines](https://bitbucket.org/databaseline/docs/src/master/oracle/guidelines.md)
++ [Unit Testing PL/SQL Code](https://databaseline.tech/unit-testing-plsql-code/)
++ [Data Warehousing, Improving ETL](https://danischnider.wordpress.com/2017/07/23/10-tips-to-improve-etl-performance/ )
++ [Query Optimization from Oracle](https://docs.oracle.com/cd/B14117_01/text.101/b10729/aoptim.htm )
++ [More about Case Statements](https://www.sqlshack.com/case-statement-in-sql/ )
++ [Michelle, Conversation about Caching](https://twitter.com/datacheesehead/status/1217213217056804864 )

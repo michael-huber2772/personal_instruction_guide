@@ -45,3 +45,16 @@ You put your will in a smart contract and then upon your death. The program and
 not a third party would handle your will. Anywhere, where a transaction needs
 to occur you can use a smart contract.
 
+
+
+Cryptocurrency
+
+Blockchain - a unique form of database that allows cryptocurrencies to work. It stores and facilitates transaction information. Most cryptocurrencies would have their own blockchain database with their own set of rules.
+Distributed Database
+Entries are immutable. E.g. data cannot be deleted
+In a blockchain database a copy of the database resides on every computer that participates in the blockchain.
+
+To give something value it must be scarce. Only 21 million bitcoins ever created. 
+Periodically new bitcoins are released and they can be acquired by solving extremely complicated mathematical puzzles. They take a lot of computing power so access is limited. Because it incurs a cost for miners to be able to access them.
+
+If demand for bitcoin is high the price increases. If demand is low the price drops.

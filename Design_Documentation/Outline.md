@@ -58,9 +58,20 @@ and automating ETL pattersn that are common in peoples' workflows, and creating 
 + Hours Spent Studying: You could set a cap of 1 day a month or 1 hour a week. But this is a great way to keep them 
   engaged. It can be specified the study must benefit the business.
 
+---
+# Testing
 
+## SQL/Database Testing
+  1. Testing the DAO (data access object) class, making sure it's correctly marshaling the values/parameters being passed to the database, and correctly marshaling/transforming/packaging results retrieved from the database.
+  In this case, you don't need to connect to the database at all; you just need a unit test that replaces the database (or intermediate layer, eg., JDBC, (N)Hibernate, iBatis) with a mock.
+  2. Testing the syntactic correctness of (generated) SQL.
+  In this case, because SQL dialects differ, you want to run the (possibly generated) SQL against the correct version of your RDBMS, rather than attempting to mock all quirks of your RDBMS (and so that any RDBMS upgrades that change functionality are caught by your tests).
+  3. Testing the semantic correctness of your SQL, i.e, that for a given baseline dataset, your operations (accesses/selects and mutations/inserts and updates) produce the expected new dataset.
+  For that, you want to use something like dbunit (which allows you to set up a baseline and compare a result set to an expected result set), or possibly do your testing wholly in the database, using the technique I outline here: [Best way to test SQL queries.](https://stackoverflow.com/questions/754527/best-way-to-test-sql-queries/754570#754570)
 ---
 # References
 + [Engineering Metrics](http://ryeok.com/blog/2014/2/1/5-key-metrics-for-engineering-departments)
 + READ MORE [A Beginners Guide to Data Engineering](https://medium.com/@rchang/a-beginners-guide-to-data-engineering-the-series-finale-2cc92ff14b0)
 + [OKR Objectives and Key Results](https://en.wikipedia.org/wiki/OKR)
++ [SQL Testing](https://stackoverflow.com/questions/1217736/how-to-write-unit-tests-for-database-calls)
++ [One way to test SQL queries.](https://stackoverflow.com/questions/754527/best-way-to-test-sql-queries/754570#754570)
