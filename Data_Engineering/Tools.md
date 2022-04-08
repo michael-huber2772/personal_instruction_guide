@@ -4,12 +4,13 @@
 * Hadoop
 
 
-# Data Engineering Platforms
+# Data Engineering Platforms & Tools
 * [Equalum](https://www.equalum.io/)
 * [Datafold](https://www.datafold.com/) - Shows how your changes to ETL will 
   change your data at a statistical level all the way down to individual rows 
   and values.
 * [Prometheus](https://prometheus.io/)
+* [Querybook](https://www.querybook.org/) - Open Source SQL IDE and notebook from Pinterest.
 
 # Schedulers
 + Apache NiFi
